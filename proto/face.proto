@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package face;
+option go_package="face";
+
+message DetectFaceRequest {
+  string b64Jpeg = 1;
+}
+
+message DetectFaceResponse {
+  string b64Jpeg = 1;
+}
+
+message VerifyFaceFeatureRequest {
+  string b64Feature1 = 1;
+  string b64Feature2 = 2;
+}
+
+message VerifyFaceFeatureResponse {
+  string similarityMetrics = 1;
+  float similarity = 2;
+}
+
+message ExtractFaceFeatureRequest {
+  string b64Jpeg = 1;
+}
+
+message ExtractFaceFeatureResponse {
+  string b64Feature = 1;
+}
+
+message FaceFeatureResponse {
+  int32 featureId = 1;
+  int32 personId = 2;
+  string b64Feature = 3;
+}
+
+message MatchFaceFeatureRequest {
+  string b64Feature = 1;
+}
+
+message MatchFaceFeatureResponse {
+  int32 personId = 1;
+  int32 featureId = 2;
+  string similarityMetrics = 3;
+  float similarity = 4;
+  bool matched = 5;
+}
+
+message InsertFaceFeatureRequest {
+  int32 personId = 1;
+  string b64Feature = 2;
+}
+
+message DeleteFaceFeatureRequest {
+  int32 featureId = 1;
+}
+
+service FaceService {
+  rpc DetectFace(DetectFaceRequest) returns (DetectFaceResponse) {};
+  rpc VerifyFaceFeature(VerifyFaceFeatureRequest) returns (VerifyFaceFeatureResponse) {};
+
+  rpc MatchFaceFeature(MatchFaceFeatureRequest) returns (MatchFaceFeatureResponse) {};
+  rpc ExtractFaceFeature(ExtractFaceFeatureRequest) returns (ExtractFaceFeatureResponse) {};
+
+  rpc InsertFaceFeature(InsertFaceFeatureRequest) returns (FaceFeatureResponse) {};
+  rpc DeleteFaceFeature(DeleteFaceFeatureRequest) returns (FaceFeatureResponse) {};
+}

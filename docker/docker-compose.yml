@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  face_service:
+    container_name: face_service
+    image: face-service:latest
+    environment:
+      FACE_SERVICE_DB_NAME: face_db
+      FACE_SERVICE_DB_HOST: postgres
+      FACE_SERVICE_DB_PORT: 5432
+      FACE_SERVICE_DB_USER: postgres
+      FACE_SERVICE_DB_PASS: postgres
+    ports:
+      - 50051:50051
+    depends_on:
+      - postgres
+    restart: always
+  postgres:
+    container_name: face_postgres
+    image: postgres:15.1
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    ports:
+      - 35432:5432
+    restart: always
