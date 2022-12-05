@@ -29,9 +29,9 @@ async def serve():
     logger.info("Started server on %s" % listen_addr)
 
     sig_handler = SignalHandler()
-    sync_tmpl_task = asyncio.create_task(feature_mngr.sync_features(sig_handler))
+    sync_feat_task = asyncio.create_task(feature_mngr.sync_features(sig_handler))
     pool_close_task = asyncio.create_task(close_pool(sig_handler))
-    await sync_tmpl_task
+    await sync_feat_task
     await pool_close_task
 
     await server.wait_for_termination(3)

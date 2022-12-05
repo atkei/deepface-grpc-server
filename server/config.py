@@ -31,7 +31,7 @@ class ServerConfig:
             log_level=LogLevel.of(os.environ.get(env.log_level.key, env.log_level.default)),
             similarity_metrics=SimilarityMetricsType.of(os.environ.get(env.sim_metrics.key, env.sim_metrics.default)),
             similarity_threshold=float(os.environ.get(env.sim_threshold.key, env.sim_threshold.default)),
-            feature_model=FeatureModel.of(os.environ.get(env.tmpl_model.key, env.tmpl_model.default)),
+            feature_model=FeatureModel.of(os.environ.get(env.feat_model.key, env.feat_model.default)),
             detector_backend=DetectorBackend.of(os.environ.get(env.detect_backend.key, env.detect_backend.default))
         )
 
