@@ -9,7 +9,7 @@ class EnvironmentVariables:
     log_level = EnvironmentVariable("FACE_SERVICE_LOG_LEVEL", "INFO")
     sim_metrics = EnvironmentVariable("FACE_SERVICE_SIM_METRICS", "cosine")
     sim_threshold = EnvironmentVariable("FACE_SERVICE_SIM_THRESHOLD", "0.5")
-    feat_model = EnvironmentVariable("FACE_SERVICE_FEATURE_MODEL", "Facenet")
+    feat_model = EnvironmentVariable("FACE_SERVICE_RECOGNITION_MODEL", "Facenet")
     detect_backend = EnvironmentVariable("FACE_SERVICE_DETECT_BACKEND", "opencv")
 
     database = EnvironmentVariable("FACE_SERVICE_DB_NAME", "face_db")

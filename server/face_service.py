@@ -62,7 +62,7 @@ class FaceService:
         if matched:
             logger.info("Matched feature (personId=%s, featureId=%s, similarity=%s)" % (person_id, feature_id, cur_sim))
         else:
-            print("No matched feature (personId=%s, featureId=%s, similarity=%s)" % (person_id, feature_id, cur_sim))
+            logger.info("No matched feature (personId=%s, featureId=%s, similarity=%s)" % (person_id, feature_id, cur_sim))
 
         return MatchFaceFeatureResponse(
             matched=matched,

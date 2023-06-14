@@ -69,11 +69,12 @@ class LogLevel(Enum):
 
 class FeatureModel(Enum):
     Facenet = "Facenet"
-    VGC_Face = "VGC-Face"
+    VGC_Face = "VGG-Face"
     Facenet512 = "Facenet512"
     ArcFace = "ArcFace"
-    Dlib = "Dlib"
-    SFace = "SFace"
+    OpenFace = "OpenFace"
+    # Dlib = "Dlib"
+    # SFace = "SFace"
 
     @classmethod
     def of(cls, target_value: str):
@@ -86,10 +87,10 @@ class FeatureModel(Enum):
 class DetectorBackend(Enum):
     opencv = "opencv"
     ssd = "ssd"
-    dlib = "dlib"
+    # dlib = "dlib"
     mtcnn = "mtcnn"
     retinaface = "retinaface"
-    mediapipe = "mediapipe"
+    # mediapipe = "mediapipe"
 
     @classmethod
     def of(cls, target_value: str):
